@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Eye, EyeOff, Mail, Lock, CheckCircle } from "lucide-react"
+import { Eye, EyeOff, Mail, Lock, TrendingUp, Zap } from "lucide-react"
+import { Background3D } from "./Background3D"
 import { useToast } from "@/hooks/use-toast"
 
 export function LoginForm() {
@@ -26,8 +27,8 @@ export function LoginForm() {
     await new Promise(resolve => setTimeout(resolve, 2000))
     
     toast({
-      title: "Login realizado com sucesso!",
-      description: "Bem-vindo de volta!",
+      title: "🚀 Acesso Liberado!",
+      description: "Dashboard carregando... Prepare-se para decolar!",
     })
     
     setIsLoading(false)
@@ -45,6 +46,9 @@ export function LoginForm() {
 
   return (
     <div className="min-h-screen bg-gradient-background flex items-center justify-center p-4 relative overflow-hidden">
+      {/* Background 3D Graphics */}
+      <Background3D />
+      
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/20 rounded-full blur-3xl animate-float"></div>
@@ -55,25 +59,32 @@ export function LoginForm() {
       <div className="w-full max-w-md relative z-10">
         {/* Logo/Brand */}
         <div className="text-center mb-8 animate-fade-in">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-hero rounded-2xl shadow-glow mb-4 animate-float">
-            <CheckCircle className="w-10 h-10 text-primary-foreground" />
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-hero rounded-2xl shadow-glow mb-4 animate-float relative">
+            <TrendingUp className="w-10 h-10 text-primary-foreground animate-pulse" />
+            <div className="absolute -top-1 -right-1 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center animate-bounce">
+              <Zap className="w-3 h-3 text-yellow-900" />
+            </div>
           </div>
-          <h1 className="text-3xl font-bold bg-gradient-hero bg-clip-text text-transparent">
-            Despachante Marcelino
+          <h1 className="text-4xl font-bold bg-gradient-hero bg-clip-text text-transparent mb-2">
+            Área VIP
           </h1>
-          <p className="text-muted-foreground mt-2">
-            Acesse sua conta
+          <p className="text-lg font-semibold text-primary mb-1">
+            🚀 Portal de Gestão Empresarial
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Maximize seus resultados • Analytics em tempo real
           </p>
         </div>
 
         {/* Login Card */}
         <Card className="backdrop-blur-sm bg-card/80 border border-primary/20 shadow-elegant animate-slide-in-right" style={{ animationDelay: "0.2s" }}>
           <CardHeader className="text-center pb-4">
-            <CardTitle className="text-2xl font-bold text-foreground">
-              Bem-vindo de volta
+            <CardTitle className="text-2xl font-bold text-foreground flex items-center justify-center gap-2">
+              <TrendingUp className="w-6 h-6 text-primary" />
+              Acelere seu Negócio
             </CardTitle>
             <CardDescription className="text-muted-foreground">
-              Entre com suas credenciais para continuar
+              Entre na plataforma mais avançada do mercado
             </CardDescription>
           </CardHeader>
           
@@ -146,10 +157,13 @@ export function LoginForm() {
                 {isLoading ? (
                   <div className="flex items-center gap-2">
                     <div className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin"></div>
-                    Entrando...
+                    Processando...
                   </div>
                 ) : (
-                  "Entrar"
+                  <div className="flex items-center gap-2">
+                    <Zap className="w-4 h-4" />
+                    Acelerar Acesso
+                  </div>
                 )}
               </Button>
             </form>
@@ -185,9 +199,9 @@ export function LoginForm() {
 
             {/* Sign Up Link */}
             <p className="text-center text-sm text-muted-foreground mt-6 animate-fade-in" style={{ animationDelay: "1.6s" }}>
-              Não tem uma conta?{" "}
+              Primeira vez aqui?{" "}
               <button className="text-primary hover:text-primary-glow transition-colors underline-offset-4 hover:underline font-medium">
-                Cadastre-se
+                Criar Conta VIP 🎯
               </button>
             </p>
           </CardContent>
