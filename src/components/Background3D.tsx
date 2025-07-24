@@ -1,5 +1,4 @@
 import { Canvas } from "@react-three/fiber"
-import { OrbitControls, Environment } from "@react-three/drei"
 import { AnimatedGraph } from "./AnimatedGraph"
 import { Suspense } from "react"
 
@@ -16,9 +15,6 @@ export function Background3D() {
           <directionalLight position={[10, 10, 5]} intensity={0.5} color="#14B8A6" />
           <pointLight position={[-10, -10, -5]} intensity={0.3} color="#06D6A0" />
           
-          {/* Environment para reflexões */}
-          <Environment preset="city" />
-          
           {/* Múltiplos gráficos animados */}
           <AnimatedGraph position={[-8, -3, -5]} delay={0} />
           <AnimatedGraph position={[-4, 2, -8]} delay={1} />
@@ -28,16 +24,6 @@ export function Background3D() {
           <AnimatedGraph position={[-6, 5, -10]} delay={5} />
           <AnimatedGraph position={[6, -4, -4]} delay={6} />
           <AnimatedGraph position={[2, 1, -11]} delay={7} />
-          
-          {/* Controles suaves da câmera */}
-          <OrbitControls
-            enableZoom={false}
-            enablePan={false}
-            autoRotate
-            autoRotateSpeed={0.5}
-            enableDamping
-            dampingFactor={0.05}
-          />
         </Suspense>
       </Canvas>
     </div>

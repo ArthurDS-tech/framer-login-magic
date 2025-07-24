@@ -1,6 +1,5 @@
 import { useRef } from "react"
 import { useFrame } from "@react-three/fiber"
-import { Box, Sphere, Cone } from "@react-three/drei"
 import * as THREE from "three"
 
 interface AnimatedGraphProps {
@@ -38,7 +37,8 @@ export function AnimatedGraph({ position, delay }: AnimatedGraphProps) {
   return (
     <group ref={groupRef} position={position}>
       {/* Caixa principal */}
-      <Box ref={boxRef} args={[1, 2, 0.3]} position={[0, 0, 0]}>
+      <mesh ref={boxRef} position={[0, 0, 0]}>
+        <boxGeometry args={[1, 2, 0.3]} />
         <meshStandardMaterial
           color="#14B8A6"
           transparent
@@ -46,10 +46,11 @@ export function AnimatedGraph({ position, delay }: AnimatedGraphProps) {
           emissive="#14B8A6"
           emissiveIntensity={0.2}
         />
-      </Box>
+      </mesh>
       
       {/* Esfera flutuante */}
-      <Sphere ref={sphereRef} args={[0.3]} position={[0, 1.5, 0]}>
+      <mesh ref={sphereRef} position={[0, 1.5, 0]}>
+        <sphereGeometry args={[0.3, 16, 16]} />
         <meshStandardMaterial
           color="#06D6A0"
           transparent
@@ -57,10 +58,11 @@ export function AnimatedGraph({ position, delay }: AnimatedGraphProps) {
           emissive="#06D6A0"
           emissiveIntensity={0.3}
         />
-      </Sphere>
+      </mesh>
       
       {/* Cone indicador */}
-      <Cone ref={coneRef} args={[0.2, 0.8]} position={[0, -1.5, 0]}>
+      <mesh ref={coneRef} position={[0, -1.5, 0]}>
+        <coneGeometry args={[0.2, 0.8, 8]} />
         <meshStandardMaterial
           color="#5EEAD4"
           transparent
@@ -68,11 +70,11 @@ export function AnimatedGraph({ position, delay }: AnimatedGraphProps) {
           emissive="#5EEAD4"
           emissiveIntensity={0.1}
         />
-      </Cone>
+      </mesh>
       
       {/* Linhas conectoras */}
       <mesh position={[0, 0.75, 0]}>
-        <cylinderGeometry args={[0.05, 0.05, 1.5]} />
+        <cylinderGeometry args={[0.05, 0.05, 1.5, 8]} />
         <meshStandardMaterial
           color="#14B8A6"
           transparent
